@@ -16,6 +16,9 @@ If you want a sound to be played each time the counter increases, put your .wav 
 
     var sounds = ["sound1", "sound2"];
 
+## Warning
+Do not expose index.html publicly while it contains your API token. It can be used to access your entire UserApp account.
+
 # License
 
 	DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
