@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>User Counter | UserApp</title>
+	<meta name="description" content="UserApp User Counter">
+	<meta name="author" content="UserApp<support@userapp.io>">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" type="image/x-icon" href="https://app.userapp.io/img/icons/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://app.userapp.io/img/icons/logo-144x144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://app.userapp.io/img/icons/logo-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://app.userapp.io/img/icons/logo-72x72.png">
+	<link rel="apple-touch-icon-precomposed" href="https://app.userapp.io/img/icons/logo-57x57.png">
+	<link rel="apple-touch-startup-image" href="https://app.userapp.io/img/splash.png"> 
+
+	<script src="https://app.userapp.io/js/userapp.client.js"></script>
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src='js/html5shiv.js'></script>
+	<![endif]-->
+
+	<link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet" type="text/css">
+	<style>
+		html, body {
+			background-color: #87D37C;
+			color: white;
+			width: 100%;
+			height: 100%;
+			font-family: "Ubuntu Mono";
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			display: table;
+		}
+		.big-number, label {
+			display: table-cell;
+			width: 50%;
+			font-size: 150px;
+			vertical-align: middle;
+		}
+		label {
+			font-size: 150px;
+			background: #3F4850;
+		}
+		label span {
+			vertical-align: top;
+			line-height: 145px;
+		}
+	</style>
+
+	<script>
+		UserApp.initialize({ appId: "YOUR-APP-ID-HERE", token: "YOU-API-TOKEN-HERE" });
+
+		var currentNumber = 0;
+		var run = 0;
+		var sounds = [];
+
+		function playSound(id) {
+			var audio = document.createElement("audio");
+			audio.src = "sounds/" + id + ".wav";
+			audio.play();
+		}
+
+		function countTo(number, id) {
+			var diff = number - currentNumber;
+			var delay = 5000 / (Math.abs(diff) || 1);
+
+			if (diff > 0) {
+				var index = 0;
+				for (var i = currentNumber; i <= number; ++i) {
+					(function(nr, wait){
+						setTimeout(function() {
+							document.getElementById(id).innerHTML = nr;
+						}, wait);
+					})(i, delay*index);
+					++index;
+				}
+			} else if (diff < 0) {
+				var index = 0;
+				for (var i = currentNumber; i >= number; --i) {
+					(function(nr, wait){
+						setTimeout(function() {
+							document.getElementById(id).innerHTML = nr;
+						}, wait);
+					})(i, delay*index);
+					++index;
+				}
+			}
+
+			currentNumber = number;
+		}
+
+		setInterval(function() {
+			UserApp.User.count(function(error, result) {
+				if (!error) {
+					if (result.count > currentNumber && sounds.length > 0) {
+						if (++run == 1) {
+							playSound(sounds[0]);
+						} else {
+							playSound(sounds[Math.floor(Math.random()*sounds.length)]);
+						}
+					}
+
+					countTo(result.count, "number");
+				}
+			});
+		}, 5000);
+	</script>
+</head>
+<body>
+	<div id="number" class="big-number">0</div>
+	<label>
+		<span>users</span>
+	</label>
+</body>
+</html>
+	
