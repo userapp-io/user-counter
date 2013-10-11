@@ -1,6 +1,8 @@
 # User Counter for UserApp
 This is the screen that we used at our launch to show the number of users on our account. And since it works for all UserApp accounts we decided to make it available for everyone that might be interested.
 
+![Screenshot of the User Counter](https://raw.github.com/userapp-io/user-counter/master/screenshot.png)
+
 ## Setup
 All it requires is this stand-alone HTML file. No other dependencies (except UserApp of course).
 
