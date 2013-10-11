@@ -18,15 +18,15 @@ If you want a sound to be played each time the counter increases, put your .wav 
 
 # License
 
-		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+	DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 
-		Copyright (C) 2013 Timothy E. Johansson <timothy.johansson@userapp.io>
+	Copyright (C) 2013 Timothy E. Johansson <timothy.johansson@userapp.io>
 
-		Everyone is permitted to copy and distribute verbatim or modified
-		copies of this license document, and changing it is allowed as long
-		as you get more users.
+	Everyone is permitted to copy and distribute verbatim or modified
+	copies of this license document, and changing it is allowed as long
+	as you get more users.
 
-		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-		TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+	DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
-		0. You just DO WHAT THE FUCK YOU WANT TO.
+	0. You just DO WHAT THE FUCK YOU WANT TO.
